@@ -5,14 +5,14 @@
 [lei "q"]
 	include = https://lore.kernel.org/all/
 	external = 1
-  threads = 1
 	local = 1
 	remote = 1
+	threads = 1
 	dedupe = mid
 	output = maildir:/home/mchauras/.mails/grub-devel
 [external "https://lore.kernel.org/all/"]
 [external "/home/mchauras/.local/share/lei/store"]
-	maxuid = 123443
+	maxuid = 53394
 
 
 ; to refresh with new results, run: lei up /home/mchauras/.mails/linuxppc
@@ -28,9 +28,8 @@
 	dedupe = mid
 	output = maildir:/home/mchauras/.mails/linuxppc
 [external "/home/mchauras/.local/share/lei/store"]
-	maxuid = 123649
+	maxuid = 53463
 [external "https://lore.kernel.org/all/"]
-
 
 
 ; to refresh with new results, run: lei up /home/mchauras/.mails/linux-riscv
@@ -46,15 +45,14 @@
 	dedupe = mid
 	output = maildir:/home/mchauras/.mails/linux-riscv
 [external "/home/mchauras/.local/share/lei/store"]
-	maxuid = 123648
+	maxuid = 53460
 [external "https://lore.kernel.org/all/"]
-
 
 
 ; to refresh with new results, run: lei up /home/mchauras/.mails/ltc-people
 ; `maxuid' and `lastresult' lines are maintained by "lei up" for optimization
 [lei]
-	q = (f:avnish@linux.ibm.com OR f:sshegde@linux.ibm.com OR f:vineethr@linux.ibm.com OR f:nysal@linux.ibm.com OR f:srikar@linux.ibm.com OR f:vishalc@linux.ibm.com OR f:ojaswin@linux.ibm.com OR f:riteshh@linux.ibm.com OR f:donettom@linux.ibm.com OR f:likhitha@linux.ibm.com OR f:aditya.b1@linux.ibm.com OR f:krishnak@linux.ibm.com OR f:maddy@linux.ibm.com) AND rt:3.month.ago..
+	q = (f:avnish@linux.ibm.com OR f:sshegde@linux.ibm.com OR f:vineethr@linux.ibm.com OR f:nysal@linux.ibm.com OR f:srikar@linux.ibm.com OR f:vishalc@linux.ibm.com OR f:ojaswin@linux.ibm.com OR f:riteshh@linux.ibm.com OR f:donettom@linux.ibm.com OR f:likhitha@linux.ibm.com OR f:aditya.b1@linux.ibm.com OR f:krishnak@linux.ibm.com OR f:maddy@linux.ibm.com OR mchauras@linux.ibm.com OR mchauras@hotmail.com) AND rt:3.month.ago..
 [lei "q"]
 	include = https://lore.kernel.org/all/
 	external = 1
@@ -64,9 +62,8 @@
 	dedupe = mid
 	output = maildir:/home/mchauras/.mails/ltc-people
 [external "/home/mchauras/.local/share/lei/store"]
-	maxuid = 121630
+	maxuid = 53373
 [external "https://lore.kernel.org/all/"]
-
 
 
 ; to refresh with new results, run: lei up /home/mchauras/.mails/mchauras
@@ -78,13 +75,12 @@
 	external = 1
 	local = 1
 	remote = 1
-  threads = 1
+	threads = 1
 	dedupe = mid
 	output = maildir:/home/mchauras/.mails/mchauras
-[external "https://lore.kernel.org/all/"]
-
 [external "/home/mchauras/.local/share/lei/store"]
-	maxuid = 114870
+	maxuid = 52255
+[external "https://lore.kernel.org/all/"]
 
 
 ; to refresh with new results, run: lei up /home/mchauras/.mails/mm
@@ -96,13 +92,12 @@
 	external = 1
 	local = 1
 	remote = 1
-  threads = 1
+	threads = 1
 	dedupe = mid
 	output = maildir:/home/mchauras/.mails/mm
 [external "/home/mchauras/.local/share/lei/store"]
-	maxuid = 123645
+	maxuid = 43224
 [external "https://lore.kernel.org/all/"]
-
 
 
 ; to refresh with new results, run: lei up /home/mchauras/.mails/sched
@@ -118,8 +113,24 @@
 	dedupe = mid
 	output = maildir:/home/mchauras/.mails/sched
 [external "/home/mchauras/.local/share/lei/store"]
-	maxuid = 123542
+	maxuid = 53335
 [external "https://lore.kernel.org/all/"]
 
+
+; to refresh with new results, run: lei up /home/mchauras/.mails/todo
+; `maxuid' and `lastresult' lines are maintained by "lei up" for optimization
+[lei]
+	q = (f:mchauras@hotmail.com) AND rt:2.year.ago..
+[lei "q"]
+	include = https://lore.kernel.org/all/
+	external = 1
+	local = 1
+	remote = 1
+	threads = 1
+	dedupe = mid
+	output = maildir:/home/mchauras/.mails/todo
+[external "https://lore.kernel.org/all/"]
+[external "/home/mchauras/.local/share/lei/store"]
+	maxuid = 42963
 
 

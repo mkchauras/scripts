@@ -20,7 +20,7 @@ if [[ -z "$PCAJET_PASSWD" ]]; then
 	exit
 fi
 
-for v in {1..12}; do
+for v in {1..11}; do
 	echo "Fetching managed systems for ltcvhmc$v..."
 	# Timout after 5s, instead of failing at it
 	sshpass -p $PCAJET_PASSWD ssh -o ConnectTimeout=5 -o LogLevel=ERROR \
