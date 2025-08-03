@@ -20,6 +20,7 @@ if [ -f ~/.mukesh_configured ]; then
 	cp -rf $CONFIG_NEOVIM $CONFIG
 	cp ~/.spacemacs $CONFIG
 	cp ~/.gdbinit $CONFIG
+	cp ~/.gitconfig $CONFIG
 	cp ~/.notmuch-config $CONFIG
 	cp ~/.muttrc $CONFIG
 
@@ -41,10 +42,12 @@ if [ -f ~/.mukesh_configured ]; then
 			configs/.spacemacs \
 			configs/.zsh_aliases \
 			configs/.gdbinit \
+			configs/.gitconfig \
 			configs/.muttrc \
 			configs/.notmuch-config
 
 		git add mukesh-*
+		git add mchauras-*
 		git add docs
 		git add scheduler
 	        git add perf

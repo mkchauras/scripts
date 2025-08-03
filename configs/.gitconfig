@@ -1,0 +1,11 @@
+[user]
+	email = mchauras@hotmail.com
+	name = Mukesh Kumar Chaurasiya
+[credential]
+	helper = store
+[sendemail]
+	smtpserver = smtp.gmail.com
+	smtpuser = mkchauras@gmail.com
+	smtpserverport = 587
+	smtpencryption = tls
+	smtpdomain = gmail.com
