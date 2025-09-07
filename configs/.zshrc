@@ -136,18 +136,8 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.zsh_system ] && source ~/.zsh_system
 
 # User Defined
-if ((  $+commands[emacsclient]  ))
-then
-	export CSCOPE_EDITOR=/usr/bin/emacsclient
-	export EDITOR='emacsclient'
-elif (( $+commands[nvim] ))
-then
-	export CSCOPE_EDITOR=/usr/bin/nvim
-	export EDITOR='nvim'
-else
-	export CSCOPE_EDITOR=/usr/bin/vim
-	export EDITOR='vim'
-fi
+export CSCOPE_EDITOR=/usr/bin/vim
+export EDITOR='vim'
 export LC_ALL=en_IN.UTF-8
 export LANG=en_IN.UTF-8
 export HISTFILE="$HOME/.zsh_history"
