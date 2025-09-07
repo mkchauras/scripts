@@ -144,6 +144,8 @@ export EDITOR='vim'
 [ -f ~/.zsh_system ] && source ~/.zsh_system
 
 # User Defined
+export CSCOPE_EDITOR=/usr/bin/vim
+export EDITOR='vim'
 export LC_ALL=en_IN.UTF-8
 export LANG=en_IN.UTF-8
 export HISTFILE="$HOME/.zsh_history"

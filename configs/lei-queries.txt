@@ -12,7 +12,7 @@
 	output = maildir:/home/mchauras/.mails/grub-devel
 [external "https://lore.kernel.org/all/"]
 [external "/home/mchauras/.local/share/lei/store"]
-	maxuid = 53394
+	maxuid = 57260
 
 
 ; to refresh with new results, run: lei up /home/mchauras/.mails/linuxppc
@@ -28,7 +28,7 @@
 	dedupe = mid
 	output = maildir:/home/mchauras/.mails/linuxppc
 [external "/home/mchauras/.local/share/lei/store"]
-	maxuid = 53463
+	maxuid = 57261
 [external "https://lore.kernel.org/all/"]
 
 
@@ -45,7 +45,7 @@
 	dedupe = mid
 	output = maildir:/home/mchauras/.mails/linux-riscv
 [external "/home/mchauras/.local/share/lei/store"]
-	maxuid = 53460
+	maxuid = 57263
 [external "https://lore.kernel.org/all/"]
 
 
@@ -62,7 +62,7 @@
 	dedupe = mid
 	output = maildir:/home/mchauras/.mails/ltc-people
 [external "/home/mchauras/.local/share/lei/store"]
-	maxuid = 53373
+	maxuid = 57209
 [external "https://lore.kernel.org/all/"]
 
 
@@ -96,14 +96,14 @@
 	dedupe = mid
 	output = maildir:/home/mchauras/.mails/mm
 [external "/home/mchauras/.local/share/lei/store"]
-	maxuid = 43224
+	maxuid = 57264
 [external "https://lore.kernel.org/all/"]
 
 
 ; to refresh with new results, run: lei up /home/mchauras/.mails/sched
 ; `maxuid' and `lastresult' lines are maintained by "lei up" for optimization
 [lei]
-	q = (dfn:Documentation/features/sched/* OR dfn:Documentation/scheduler/* OR dfn:include/linux/sched/* OR dfn:include/uapi/linux/sched/* OR dfn:kernel/sched/* OR dfn:tools/include/linux/sched/* OR dfn:tools/testing/selftests/sched/*) AND rt:3.month.ago..
+	q = (dfn:Documentation/features/sched/* OR dfn:Documentation/scheduler/* OR dfn:include/linux/sched/* OR dfn:include/uapi/linux/sched/* OR dfn:kernel/sched/* OR dfn:tools/include/linux/sched/* OR dfn:tools/testing/selftests/sched/* OR f:peterz@infradead.org) AND rt:3.month.ago..
 [lei "q"]
 	include = https://lore.kernel.org/all/
 	external = 1
@@ -113,7 +113,7 @@
 	dedupe = mid
 	output = maildir:/home/mchauras/.mails/sched
 [external "/home/mchauras/.local/share/lei/store"]
-	maxuid = 53335
+	maxuid = 57259
 [external "https://lore.kernel.org/all/"]
 
 
