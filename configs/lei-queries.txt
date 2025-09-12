@@ -1,4 +1,4 @@
-; to refresh with new results, run: lei up /home/mchauras/.mails/grub-devel
+; to refresh with new results, run: lei up /home/mkchauras/.mails/grub-devel
 ; `maxuid' and `lastresult' lines are maintained by "lei up" for optimization
 [lei]
 	q = (a:grub-devel@gnu.org OR f:avnish@linux.ibm.com) AND rt:3.month.ago..
@@ -9,13 +9,13 @@
 	remote = 1
 	threads = 1
 	dedupe = mid
-	output = maildir:/home/mchauras/.mails/grub-devel
+	output = maildir:/home/mkchauras/.mails/grub-devel
 [external "https://lore.kernel.org/all/"]
-[external "/home/mchauras/.local/share/lei/store"]
+[external "/home/mkchauras/.local/share/lei/store"]
 	maxuid = 57260
 
 
-; to refresh with new results, run: lei up /home/mchauras/.mails/linuxppc
+; to refresh with new results, run: lei up /home/mkchauras/.mails/linuxppc
 ; `maxuid' and `lastresult' lines are maintained by "lei up" for optimization
 [lei]
 	q = (a:linuxppc-dev@lists.ozlabs.org) AND rt:3.month.ago..
@@ -26,13 +26,13 @@
 	remote = 1
 	threads = 1
 	dedupe = mid
-	output = maildir:/home/mchauras/.mails/linuxppc
-[external "/home/mchauras/.local/share/lei/store"]
+	output = maildir:/home/mkchauras/.mails/linuxppc
+[external "/home/mkchauras/.local/share/lei/store"]
 	maxuid = 57261
 [external "https://lore.kernel.org/all/"]
 
 
-; to refresh with new results, run: lei up /home/mchauras/.mails/linux-riscv
+; to refresh with new results, run: lei up /home/mkchauras/.mails/linux-riscv
 ; `maxuid' and `lastresult' lines are maintained by "lei up" for optimization
 [lei]
 	q = (a:linux-riscv@lists.infradead.org) AND rt:3.month.ago..
@@ -43,16 +43,16 @@
 	remote = 1
 	threads = 1
 	dedupe = mid
-	output = maildir:/home/mchauras/.mails/linux-riscv
-[external "/home/mchauras/.local/share/lei/store"]
+	output = maildir:/home/mkchauras/.mails/linux-riscv
+[external "/home/mkchauras/.local/share/lei/store"]
 	maxuid = 57263
 [external "https://lore.kernel.org/all/"]
 
 
-; to refresh with new results, run: lei up /home/mchauras/.mails/ltc-people
+; to refresh with new results, run: lei up /home/mkchauras/.mails/ltc-people
 ; `maxuid' and `lastresult' lines are maintained by "lei up" for optimization
 [lei]
-	q = (f:avnish@linux.ibm.com OR f:sshegde@linux.ibm.com OR f:vineethr@linux.ibm.com OR f:nysal@linux.ibm.com OR f:srikar@linux.ibm.com OR f:vishalc@linux.ibm.com OR f:ojaswin@linux.ibm.com OR f:riteshh@linux.ibm.com OR f:donettom@linux.ibm.com OR f:likhitha@linux.ibm.com OR f:aditya.b1@linux.ibm.com OR f:krishnak@linux.ibm.com OR f:maddy@linux.ibm.com OR mchauras@linux.ibm.com OR mchauras@hotmail.com) AND rt:3.month.ago..
+	q = (f:avnish@linux.ibm.com OR f:sshegde@linux.ibm.com OR f:vineethr@linux.ibm.com OR f:nysal@linux.ibm.com OR f:srikar@linux.ibm.com OR f:vishalc@linux.ibm.com OR f:ojaswin@linux.ibm.com OR f:riteshh@linux.ibm.com OR f:donettom@linux.ibm.com OR f:likhitha@linux.ibm.com OR f:aditya.b1@linux.ibm.com OR f:krishnak@linux.ibm.com OR f:maddy@linux.ibm.com OR mchauras@linux.ibm.com OR mkchauras@linux.ibm.com OR mkchauras@gmail.com) AND rt:3.month.ago..
 [lei "q"]
 	include = https://lore.kernel.org/all/
 	external = 1
@@ -60,16 +60,16 @@
 	remote = 1
 	threads = 1
 	dedupe = mid
-	output = maildir:/home/mchauras/.mails/ltc-people
-[external "/home/mchauras/.local/share/lei/store"]
+	output = maildir:/home/mkchauras/.mails/ltc-people
+[external "/home/mkchauras/.local/share/lei/store"]
 	maxuid = 57209
 [external "https://lore.kernel.org/all/"]
 
 
-; to refresh with new results, run: lei up /home/mchauras/.mails/mchauras
+; to refresh with new results, run: lei up /home/mkchauras/.mails/mkchauras
 ; `maxuid' and `lastresult' lines are maintained by "lei up" for optimization
 [lei]
-	q = (a:mchauras@hotmail.com OR a:mchauras@linux.ibm.com OR a:mchauras.linux@gmail.com OR a:mchauras.lists@gmail.com) AND rt:9.month.ago..
+	q = (a:mchauras@hotmail.com OR a:mkchauras@linux.ibm.com OR a:mchauras.linux@gmail.com OR a:mchauras.lists@gmail.com OR a:mkchauras@gmail.com) AND rt:9.month.ago..
 [lei "q"]
 	include = https://lore.kernel.org/all/
 	external = 1
@@ -77,13 +77,13 @@
 	remote = 1
 	threads = 1
 	dedupe = mid
-	output = maildir:/home/mchauras/.mails/mchauras
-[external "/home/mchauras/.local/share/lei/store"]
+	output = maildir:/home/mkchauras/.mails/mkchauras
+[external "/home/mkchauras/.local/share/lei/store"]
 	maxuid = 52255
 [external "https://lore.kernel.org/all/"]
 
 
-; to refresh with new results, run: lei up /home/mchauras/.mails/mm
+; to refresh with new results, run: lei up /home/mkchauras/.mails/mm
 ; `maxuid' and `lastresult' lines are maintained by "lei up" for optimization
 [lei]
 	q = (a:linux-mm@kvack.org) AND rt:1.month.ago..
@@ -94,13 +94,13 @@
 	remote = 1
 	threads = 1
 	dedupe = mid
-	output = maildir:/home/mchauras/.mails/mm
-[external "/home/mchauras/.local/share/lei/store"]
+	output = maildir:/home/mkchauras/.mails/mm
+[external "/home/mkchauras/.local/share/lei/store"]
 	maxuid = 57264
 [external "https://lore.kernel.org/all/"]
 
 
-; to refresh with new results, run: lei up /home/mchauras/.mails/sched
+; to refresh with new results, run: lei up /home/mkchauras/.mails/sched
 ; `maxuid' and `lastresult' lines are maintained by "lei up" for optimization
 [lei]
 	q = (dfn:Documentation/features/sched/* OR dfn:Documentation/scheduler/* OR dfn:include/linux/sched/* OR dfn:include/uapi/linux/sched/* OR dfn:kernel/sched/* OR dfn:tools/include/linux/sched/* OR dfn:tools/testing/selftests/sched/* OR f:peterz@infradead.org) AND rt:3.month.ago..
@@ -111,13 +111,13 @@
 	remote = 1
 	threads = 1
 	dedupe = mid
-	output = maildir:/home/mchauras/.mails/sched
-[external "/home/mchauras/.local/share/lei/store"]
+	output = maildir:/home/mkchauras/.mails/sched
+[external "/home/mkchauras/.local/share/lei/store"]
 	maxuid = 57259
 [external "https://lore.kernel.org/all/"]
 
 
-; to refresh with new results, run: lei up /home/mchauras/.mails/todo
+; to refresh with new results, run: lei up /home/mkchauras/.mails/todo
 ; `maxuid' and `lastresult' lines are maintained by "lei up" for optimization
 [lei]
 	q = (f:mchauras@hotmail.com) AND rt:2.year.ago..
@@ -128,9 +128,9 @@
 	remote = 1
 	threads = 1
 	dedupe = mid
-	output = maildir:/home/mchauras/.mails/todo
+	output = maildir:/home/mkchauras/.mails/todo
 [external "https://lore.kernel.org/all/"]
-[external "/home/mchauras/.local/share/lei/store"]
+[external "/home/mkchauras/.local/share/lei/store"]
 	maxuid = 42963
 
 
