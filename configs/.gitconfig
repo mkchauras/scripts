@@ -1,11 +1,4 @@
+# This is Git's per-user configuration file.
 [user]
-	email = mchauras@hotmail.com
-	name = Mukesh Kumar Chaurasiya
-[credential]
-	helper = store
-[sendemail]
-	smtpserver = smtp.gmail.com
-	smtpuser = mkchauras@gmail.com
-	smtpserverport = 587
-	smtpencryption = tls
-	smtpdomain = gmail.com
+	name = Mukesh Kumar Chaurasiya (IBM)
+	email = mkchauras@gmail.com

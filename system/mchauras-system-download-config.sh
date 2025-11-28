@@ -23,6 +23,26 @@ cp $CONFIG/.notmuch-config ~/
 cp $CONFIG/.muttrc ~/
 cp -rf $CONFIG/nvim ~/.config
 
+function get_nvim_config() {
+	git clone git@github.com:mkchauras/nvim-config.git ~/.config/nvim
+	rm -rf ~/.local/share/nvim
+	rm -rf ~/.local/state/nvim
+	rm -rf ~/.cache/nvim
+}
+
+if [ ! -d ~/.config/nvim ]; then
+	get_nvim_config
+else
+	cd ~/.config/nvim
+	if git rev-parse --is-inside-work-tree &>/dev/null; then
+  		git pull --rebase
+	else
+  		cd ..
+		rm -rf ~/.config/nvim
+		get_nvim_config
+	fi
+fi
+
 if [ ! -d ~/.emacs.d ]; then
 	git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 fi
