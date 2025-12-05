@@ -1,0 +1,52 @@
+##############################
+# IBM ACCOUNT
+##############################
+
+IMAPAccount IBM
+Host imap.linux.ibm.com
+User mchauras
+PassCmd "pass ibm/pass"
+TLSType IMAPS
+
+IMAPStore Far-IBM
+Account IBM
+
+MaildirStore Near-IBM
+Path ~/.mails/IBM/
+Inbox ~/.mails/IBM/Inbox
+
+Channel IBM
+Far :Far-IBM:
+Near :Near-IBM:
+Patterns INBOX
+Create Near
+Expunge Both
+SyncState *
+Sync All
+
+##############################
+# GMAIL ACCOUNT
+##############################
+
+IMAPAccount Gmail
+Host imap.gmail.com
+User mkchauras@gmail.com
+PassCmd "pass gmail/mkchauras"
+TLSType IMAPS
+
+IMAPStore Far-Gmail
+Account Gmail
+
+MaildirStore Near-Gmail
+Path ~/.mails/Gmail/
+Inbox ~/.mails/Gmail/Inbox
+
+Channel Gmail
+Far :Far-Gmail:
+Near :Near-Gmail:
+Patterns INBOX
+Create Near
+Expunge Both
+SyncState *
+Sync All
+

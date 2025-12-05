@@ -10,7 +10,7 @@ set folder = "~/.mails"
 
 # Other mailboxes #
 mailboxes -label todo $HOME/.mails/todo
-mailboxes -label mchauras $HOME/.mails/mchauras
+mailboxes -label mkchauras $HOME/.mails/mkchauras
 mailboxes -label sched $HOME/.mails/sched
 mailboxes -label linuxppc $HOME/.mails/linuxppc
 mailboxes -label linux-riscv $HOME/.mails/linux-riscv
@@ -73,7 +73,8 @@ macro index,pager DP "| b4 am -o $HOME/src/mutt_patches"
 set new_mail_command="notify-send -i '/home/mchauras/.neomutt.png' \
 'New Email in %f' '%n new messages, %u unread.' &"
 
-source ~/.muttrc.cred 
+mailboxes -label IBM ~/.mails/IBM/Inbox
+mailboxes -label Gmail ~/.mails/Gmail/Inbox
 
 # Default Mail Directory
 set folder = "~/.mails"
