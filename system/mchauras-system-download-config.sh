@@ -3,6 +3,9 @@
 CONFIG=~/scripts/configs
 CONFIG_NEOVIM=~/.config/nvim
 
+###############################################################################
+#				Generic Config
+###############################################################################
 cd $CONFIG
 git pull
 
@@ -21,7 +24,7 @@ cp $CONFIG/.spacemacs ~/
 cp $CONFIG/.gdbinit ~/
 cp $CONFIG/.notmuch-config ~/
 cp $CONFIG/.muttrc ~/
-cp -rf $CONFIG/nvim ~/.config
+cp $CONFIG/.mbsyncrc ~/
 
 function get_nvim_config() {
 	git clone git@github.com:mkchauras/nvim-config.git ~/.config/nvim
@@ -30,6 +33,13 @@ function get_nvim_config() {
 	rm -rf ~/.cache/nvim
 }
 
+function get_mutt_config() {
+	git clone git@github.com:dracula/mutt.git ~/.mutt
+}
+
+###############################################################################
+#				NVIM
+###############################################################################
 if [ ! -d ~/.config/nvim ]; then
 	get_nvim_config
 else
@@ -43,10 +53,33 @@ else
 	fi
 fi
 
+###############################################################################
+#				MUTT
+###############################################################################
+if [ ! -d ~/.mutt ]; then
+	get_mutt_config
+else
+	cd ~/.mutt
+	if git rev-parse --is-inside-work-tree &>/dev/null; then
+  		git pull --rebase
+	else
+  		cd ..
+		rm -rf ~/.mutt
+		get_mutt_config
+	fi
+
+fi
+
+###############################################################################
+#				EMACS
+###############################################################################
 if [ ! -d ~/.emacs.d ]; then
 	git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 fi
 
+###############################################################################
+#				Oh my ZSH
+###############################################################################
 if [ ! -d ~/.oh-my-zsh ]; then
 
 	# Clone all plugins and themes for zsh

@@ -22,6 +22,7 @@ if [ -f ~/.mukesh_configured ]; then
 	cp ~/.gitconfig $CONFIG
 	cp ~/.notmuch-config $CONFIG
 	cp ~/.muttrc $CONFIG
+	cp ~/.mbsyncrc $CONFIG
 
 	if [[ $(git status --porcelain) ]]; then
 		git checkout -b $BRANCH
@@ -42,7 +43,8 @@ if [ -f ~/.mukesh_configured ]; then
 			configs/.gdbinit \
 			configs/.gitconfig \
 			configs/.muttrc \
-			configs/.notmuch-config
+			configs/.notmuch-config \
+			configs/.mbsyncrc
 
 		git add mukesh-*
 		git add mchauras-*
