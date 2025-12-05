@@ -159,3 +159,4 @@ export CXX="ccache g++"
 # Created by `userpath` on 2024-01-04 18:46:51
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/src/kernel-build-containers"
