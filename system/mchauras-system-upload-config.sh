@@ -1,5 +1,7 @@
 #! /bin/bash
 
+set -x
+
 CONFIG=~/scripts/configs
 BRANCH="$(hostname)-$(date "+%Y-%m-%d-%H-%M-%S")"
 if [ -f ~/.mukesh_configured ]; then
@@ -52,7 +54,8 @@ if [ -f ~/.mukesh_configured ]; then
 	        git add perf
 		git add bpf-scripts
 		git add linux-build
-		git add misc-scripts	
+		git add misc-scripts
+		git add system
 
 		git status
 
@@ -60,7 +63,7 @@ if [ -f ~/.mukesh_configured ]; then
 		echo -e "\n\nPushing All configs to scripts repo\n\n"
 		git push --set-upstream origin $BRANCH
 	fi
-	git checkout master
+	git checkout main
 	cd ~/.config/nvim
 	git pull --rebase
 	if [[ $(git status --porcelain) ]]; then
