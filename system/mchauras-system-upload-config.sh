@@ -1,7 +1,5 @@
 #! /bin/bash
 
-set -x
-
 CONFIG=~/scripts/configs
 BRANCH="$(hostname)-$(date "+%Y-%m-%d-%H-%M-%S")"
 if [ -f ~/.mukesh_configured ]; then
