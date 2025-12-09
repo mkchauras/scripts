@@ -53,3 +53,18 @@ gdb-tmux() {
     gdb -ex "dashboard -output $tty" "$@"
     tmux kill-pane -t "$id"
 }
+
+loop-over() {
+    if [[ $# -lt 2 ]]; then
+	echo "Usage: loop-over <count> <command...>"
+	return 1
+    fi
+
+    local count=$1
+    shift
+
+    for ((i=1; i<=count; i++)); do
+	echo "---- Run $i/$count ----"
+	"$@"
+    done
+}
