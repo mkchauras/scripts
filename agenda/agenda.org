@@ -69,3 +69,6 @@ DEADLINE: <2024-10-30 Wed>
 ** TODO RUST github actions
 DEADLINE: <2025-03-16 Sun>
 
+** TODO hello
+DEADLINE: <2025-12-16 Tue>
+
