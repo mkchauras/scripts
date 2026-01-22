@@ -8,7 +8,7 @@ BASE=$1
 NEW=$2
 
 if [ $# -ne 2 ]; then
-    echo "Usage: $0 kernelA.md kernelB.md"
+    echo "Usage: $0 baseline test"
     exit 1
 fi
 
@@ -19,8 +19,8 @@ fi
 echo
 echo "### Latency (usecs/op)"
 echo
-echo "| Syscall | Base | New | Δ % |"
-echo "|---------|------|-----|-----|"
+echo "| Syscall | Base | test | Δ % |"
+echo "|---------|------|------|-----|"
 
 awk -F'|' '
 $2 ~ /Syscall/ || $2 ~ /^-+/ || NF < 4 { next }
