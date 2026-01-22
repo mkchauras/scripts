@@ -7,7 +7,7 @@ RUNS=${1:-10}
 TMP_FILE=$(mktemp)
 
 set -e
-
+echo `uname -r`
 for i in $(seq 1 "$RUNS"); do
     echo "Running Iteration no. $i" >&2
     LC_ALL=C perf bench syscall all
