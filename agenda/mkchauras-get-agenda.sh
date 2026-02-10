@@ -13,7 +13,7 @@ if [[ $(git status agenda --porcelain) ]]; then
 fi
 
 mv $AGENDA_FILE $TEMP_AGENDA_FILE
-/usr/bin/emacs -batch -l ~/scripts/agenda/mukesh-export-agenda.el
+/usr/bin/emacs -batch -l ~/scripts/agenda/mkchauras-export-agenda.el
 #emacs -nw --eval '(progn
 #                 (setq org-agenda-files (list "~/scripts/agenda/agenda.org"))              
 #                 (org-agenda-list)
@@ -23,5 +23,5 @@ mv $AGENDA_FILE $TEMP_AGENDA_FILE
 if ! cmp -s $AGENDA_FILE $TEMP_AGENDA_FILE; then
 	# Send email
 	echo "Agenda has changed"
-	~/scripts/agenda/mchauras-send-agenda.sh
+	~/scripts/agenda/mkchauras-send-agenda.sh
 fi
