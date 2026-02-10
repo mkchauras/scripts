@@ -13,12 +13,12 @@ if [[ $(git status agenda --porcelain) ]]; then
 fi
 
 mv $AGENDA_FILE $TEMP_AGENDA_FILE
-#/usr/bin/emacs -batch -l ~/scripts/agenda/mukesh-export-agenda.el
-emacs -nw --eval '(progn
-                 (setq org-agenda-files (list "~/scripts/agenda/agenda.org"))              
-                 (org-agenda-list)
-                 (org-agenda-write (expand-file-name "~/.agenda.html"))
-                 (save-buffers-kill-emacs))'
+/usr/bin/emacs -batch -l ~/scripts/agenda/mukesh-export-agenda.el
+#emacs -nw --eval '(progn
+#                 (setq org-agenda-files (list "~/scripts/agenda/agenda.org"))              
+#                 (org-agenda-list)
+#                 (org-agenda-write (expand-file-name "~/.agenda.html"))
+#                 (save-buffers-kill-emacs))'
 
 if ! cmp -s $AGENDA_FILE $TEMP_AGENDA_FILE; then
 	# Send email
