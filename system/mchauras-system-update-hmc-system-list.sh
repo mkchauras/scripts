@@ -24,7 +24,7 @@ for v in {1..11}; do
 	echo "Fetching managed systems for ltcvhmc$v..."
 	# Timout after 5s, instead of failing at it
 	sshpass -p $PCAJET_PASSWD ssh -o ConnectTimeout=5 -o LogLevel=ERROR \
-	-o StrictHostKeyChecking=no hscroot@ltcvhmc$v.onecloud.stglabs.ibm.com "true"
+	-o StrictHostKeyChecking=no hscroot@ltcvhmc${v}b.ltc.tadn.ibm.com "true"
 
 	if [[ $? -eq 5 ]]; then
 		echo "$PCAJET_PASSWD is invalid"
@@ -34,11 +34,11 @@ for v in {1..11}; do
 	managed_systems=$( \
 		sshpass -p $PCAJET_PASSWD \
 		ssh -o ConnectTimeout=5 -o LogLevel=ERROR \
-		-o StrictHostKeyChecking=no hscroot@ltcvhmc$v.onecloud.stglabs.ibm.com "lssyscfg -r sys -F name" | sed 's/\r$//')
+		-o StrictHostKeyChecking=no hscroot@ltcvhmc${v}b.ltc.tadn.ibm.com "lssyscfg -r sys -F name" | sed 's/\r$//')
 
 	test -n "$managed_systems" && {
 		sed -i -e "/ltcvhmc$v/d" $managed_systems_file
-		printf "ltcvhmc$v:" >> $managed_systems_file
+		printf "ltcvhmc${v}b:" >> $managed_systems_file
 		echo $managed_systems | while read sys; do
 			printf " $sys" >> $managed_systems_file
 		done

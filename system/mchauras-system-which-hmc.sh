@@ -39,6 +39,6 @@ if [[ "$hmc" == "" ]]; then
 	echo "System not connected to any of the known HMCs";
 	exit 1
 else
-	echo $hmc.onecloud.stglabs.ibm.com
+	echo $hmc.ltc.tadn.ibm.com
 fi
 

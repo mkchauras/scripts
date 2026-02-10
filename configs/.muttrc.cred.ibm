@@ -1,0 +1,16 @@
+
+# IMAP #
+
+set imap_user=mchauras
+set imap_pass=`pass ibm/pass`
+set folder=imaps://imap.linux.ibm.com:993/
+set spoolfile = "+INBOX"
+set record = "+Sent"
+mailboxes = +INBOX
+
+# SMTP #
+set from = "mkchauras@linux.ibm.com"
+set realname = "Mukesh Kumar Chaurasiya"
+set smtp_url = "smtp://ap.relay.ibm.com:25"
+set smtp_pass=`pass ibm/pass`
+set from="Mukesh Kumar Chaurasiya <mkchauras@linux.ibm.com>"
