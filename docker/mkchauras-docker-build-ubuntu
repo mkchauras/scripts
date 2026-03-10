@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Exit immediately if a command fails
+set -e
+
+# Image name
+IMAGE_NAME="ubuntu:mkchauras"
+
+# Path to Dockerfile
+DOCKERFILE_PATH="$HOME/scripts/docker/dockerfile/ubuntu.dockerfile"
+
+# Build context (directory sent to Docker daemon)
+BUILD_CONTEXT="$HOME/scripts/docker"
+
+echo "Building Docker image: $IMAGE_NAME"
+echo "Using Dockerfile: $DOCKERFILE_PATH"
+
+docker build \
+  -t "$IMAGE_NAME" \
+  -f "$DOCKERFILE_PATH" \
+  "$BUILD_CONTEXT"
+
+echo "Build completed."
+
+# Verify image
+docker images | grep mkchauras
