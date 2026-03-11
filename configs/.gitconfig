@@ -1,15 +1,33 @@
 # This is Git's per-user configuration file.
-[credential]
-	helper = store
-[diff]
-	renameLimit = 1672
 [user]
 	name = Mukesh Kumar Chaurasiya (IBM)
 	email = mkchauras@gmail.com
-[sendemail]
+[sendemail "gmail"]
+	name = Mukesh Kumar Chaurasiya (IBM)
+	email = mkchauras@gmail.com
+	from = Mukesh Kumar Chaurasiya (IBM) <mkchauras@gmail.com>
 	smtpserver = smtp.gmail.com
 	smtpserverport = 587
 	smtpencryption = tls
 	smtpuser = mkchauras@gmail.com
-	from = Mukesh Kumar Chaurasiya (IBM) <mkchauras@gmail.com>
-
+	smtppassCmd = pass show gmail/mkchauras
+	smtpssl = false
+	smtptls = true
+[sendemail "ibm"]
+	name = Mukesh Kumar Chaurasiya
+	email = mkchauras@linux.ibm.com
+	from = Mukesh Kumar Chaurasiya <mkchauras@linux.ibm.com>
+	smtpServer = ap.relay.ibm.com
+	smtpServerPort = 25
+[rerere]
+	enabled = true
+[credential]
+	helper = store
+[diff]
+	renameLimit = 1672
+[maintenance]
+	auto = true
+	repo = /home/mkchauras/src/linux
+	repo = /home/mkchauras/src/linux-emacs
+	repo = /home/mkchauras/src/linux-mkchauras
+	repo = /home/mkchauras/src/linux-next

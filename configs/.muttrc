@@ -6,6 +6,7 @@ source ~/.mutt/dracula.muttrc
 # set debug_level=5
 
 # Default Mail Directory
+set edit_headers=yes
 set folder = "~/.mails"
 
 # Other mailboxes #
@@ -14,9 +15,8 @@ mailboxes -label mkchauras $HOME/.mails/mkchauras
 mailboxes -label sched $HOME/.mails/sched
 mailboxes -label linuxppc $HOME/.mails/linuxppc
 mailboxes -label linux-riscv $HOME/.mails/linux-riscv
-mailboxes -label memory-management $HOME/.mails/mm
-mailboxes -label grub-devel $HOME/.mails/grub-devel
 mailboxes -label ltc-people $HOME/.mails/ltc-people
+mailboxes -label rust-linux $HOME/.mails/rust-linux
 #mailboxes -label fsdevel $HOME/workspace/projects/lei/fsdevel
 #mailboxes -label ojaswin $HOME/workspace/projects/lei/ojaswin
 #mailboxes -label ltc-mmfs $HOME/workspace/projects/lei/ltc-mmfs
@@ -73,8 +73,6 @@ macro index,pager DP "| b4 am -o $HOME/src/mutt_patches"
 set new_mail_command="notify-send -i '/home/mchauras/.neomutt.png' \
 'New Email in %f' '%n new messages, %u unread.' &"
 
-mailboxes -label IBM ~/.mails/IBM/Inbox
-mailboxes -label Gmail ~/.mails/Gmail/Inbox
-
+source ~/.muttrc.cred 
 # Default Mail Directory
 set folder = "~/.mails"
