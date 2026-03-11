@@ -6,7 +6,7 @@ python
 
 # License ----------------------------------------------------------------------
 
-# Copyright (c) 2015-2024 Andrea Cardaci <cyrus.and@gmail.com>
+# Copyright (c) 2015-2025 Andrea Cardaci <cyrus.and@gmail.com>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -612,11 +612,13 @@ class Dashboard(gdb.Command):
             else:
                 import termios
                 import fcntl
-                # first 2 shorts (4 byte) of struct winsize
-                raw = fcntl.ioctl(fd, termios.TIOCGWINSZ, ' ' * 4)
-                height, width = struct.unpack('hh', raw)
+                # first 2 shorts of struct winsize
+                winsize_format = 'hhhh'
+                buffer = b'\x00' * struct.calcsize(winsize_format)
+                buffer = fcntl.ioctl(fd, termios.TIOCGWINSZ, buffer)
+                height, width, _, _ = struct.unpack(winsize_format, buffer)
                 return int(width), int(height)
-        except (ImportError, OSError):
+        except (ImportError, OSError, SystemError):
             # this happens when no curses library is found on windows or when
             # the terminal is not properly configured
             return 80, 24  # hardcoded fallback value
@@ -2374,13 +2376,17 @@ set python print-stack full
 
 python Dashboard.start()
 
+# Fixes ------------------------------------------------------------------------
+
+# workaround for the GDB readline issue, see #325
+python import sys; sys.modules['readline'] = None
+
 # File variables ---------------------------------------------------------------
 
 # vim: filetype=python
 # Local Variables:
 # mode: python
 # End:
-
 set auto-load safe-path /
 
 define debug-generic-start

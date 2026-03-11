@@ -1,3 +1,5 @@
 alias gits="git status"
 alias mutt="neomutt"
+alias e="emacs -nw"
+#alias minicom='minicom -w -t xterm -l -R UTF-8'
 
