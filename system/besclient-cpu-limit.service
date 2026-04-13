@@ -1,0 +1,12 @@
+[Unit]
+Description=Set CPU limit for BES Client service
+After=besclient.service
+Requires=besclient.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c "echo 1000 > /sys/fs/cgroup/system.slice/besclient.service/cpu.max"
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
