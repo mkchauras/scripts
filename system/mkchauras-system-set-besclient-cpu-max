@@ -1,0 +1,34 @@
+#!/usr/bin/expect -f
+
+# Get password from pass command
+set timeout 10
+spawn pass ibm/pass
+expect eof
+set password [string trim $expect_out(buffer)]
+
+# Execute sudo command with password
+spawn sudo bash -c "echo 1000 > /sys/fs/cgroup/system.slice/besclient.service/cpu.max"
+expect {
+    "password*:" {
+        send "$password\r"
+        expect eof
+    }
+    eof {
+        # No password prompt, command executed successfully
+    }
+    timeout {
+        puts "Error: Command timed out"
+        exit 1
+    }
+}
+
+# Check exit status
+catch wait result
+set exit_status [lindex $result 3]
+if {$exit_status != 0} {
+    puts "Error: Command failed with exit status $exit_status"
+    exit $exit_status
+}
+
+puts "Successfully set cpu.max to 1000 for besclient.service"
+exit 0
