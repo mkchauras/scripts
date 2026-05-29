@@ -2005,6 +2005,60 @@ class Registers(Dashboard.Module):
             register_list = self.register_list.split()
         else:
             register_list = Registers.fetch_register_list()
+        riscv_csrs = [
+            'sstatus',
+            'sie',
+            'stvec',
+            'scounteren',
+            'senvcfg',
+            'sscratch',
+            'sepc',
+            'scause',
+            'stval',
+            'sip',
+            'satp',
+            'mstatus',
+            'misa',
+            'medeleg',
+            'mideleg',
+            'mie',
+            'mtvec',
+            'mcounteren',
+            'menvcfg',
+            'mcountinhibit',
+            'mscratch',
+            'mepc',
+            'mcause',
+            'mtval',
+            'mip',
+            'mtinst',
+            'mtval2',
+            'tselect',
+            'tdata1',
+            'tdata2',
+            'tdata3',
+            'tinfo',
+            'mcontext',
+            'mcycle',
+            'minstret',
+            'cycle',
+            'time',
+            'instret',
+            'mvendorid',
+            'marchid',
+            'mimpid',
+            'mhartid',
+            'mconfigptr',
+            'priv',
+        ]
+        
+        for reg in riscv_csrs:
+            try:
+                gdb.parse_and_eval(f'${reg}')
+                register_list.append(reg)
+            except:
+                pass
+
         # fetch registers status
         registers = []
         for name in register_list:

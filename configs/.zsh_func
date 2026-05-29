@@ -46,14 +46,6 @@ addtask() {
 	~/scripts/agenda/mchauras-add-task.sh $1 "$args"
 }
 
-gdb-tmux() {
-    local id="$(tmux split-pane -hPF "#D" "tail -f /dev/null")"
-    tmux last-pane
-    local tty="$(tmux display-message -p -t "$id" '#{pane_tty}')"
-    gdb -ex "dashboard -output $tty" "$@"
-    tmux kill-pane -t "$id"
-}
-
 loop-over() {
     if [[ $# -lt 2 ]]; then
 	echo "Usage: loop-over <count> <command...>"
@@ -67,4 +59,37 @@ loop-over() {
 	echo "---- Run $i/$count ----"
 	"$@"
     done
+}
+
+gdb-tmux() {
+    local session="gdb-session"
+
+    # Not inside tmux -> create session and re-enter function
+    if [ -z "$TMUX" ]; then
+        tmux new-session -d -s "$session" \
+            "zsh -ic 'gdb-tmux $*'"
+
+        tmux attach-session -t "$session"
+        return
+    fi
+
+    # Create right pane for registers (66% width)
+    local reg_pane
+    reg_pane="$(tmux split-pane -h -p 66 -PF '#D' 'cat')"
+
+    # Get tty of register pane
+    local reg_tty
+    reg_tty="$(tmux display-message -p -t "$reg_pane" '#{pane_tty}')"
+
+    # Return focus to left pane
+    tmux last-pane
+
+    # Cleanup pane on exit/error
+    trap "tmux kill-pane -t '$reg_pane' 2>/dev/null" EXIT
+
+    # Run gdb in current pane
+    gdb \
+        -ex "dashboard -layout source assembly registers" \
+        -ex "dashboard registers -output $reg_tty" \
+        "$@"
 }

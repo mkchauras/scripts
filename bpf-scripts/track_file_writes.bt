@@ -1,0 +1,82 @@
+#!/usr/bin/env bpftrace
+
+/*
+ * Track file writes and show which files are written to most
+ * Usage: sudo bpftrace track_file_writes.bt
+ * Press Ctrl+C to see results
+ */
+
+BEGIN
+{
+    printf("Tracking file writes... Press Ctrl+C to see results\n");
+    printf("Filtering for zsh processes and common shell-related files\n\n");
+}
+
+// Track write() syscalls
+tracepoint:syscalls:sys_enter_write
+{
+    @write_fd[tid] = args->fd;
+}
+
+tracepoint:syscalls:sys_exit_write
+/@write_fd[tid]/
+{
+    $fd = @write_fd[tid];
+    $bytes = args->ret;
+    
+    if ($bytes > 0) {
+        $path = path(curtask->files->fdt->fd[$fd]);
+        
+        // Count writes per file
+        @writes[$path] = count();
+        
+        // Track total bytes written per file
+        @bytes_written[$path] = sum($bytes);
+        
+        // Track writes by process
+        @writes_by_proc[comm, $path] = count();
+    }
+    
+    delete(@write_fd[tid]);
+}
+
+// Track open() syscalls to catch file opens
+tracepoint:syscalls:sys_enter_openat
+{
+    @filename[tid] = str(args->filename);
+}
+
+tracepoint:syscalls:sys_exit_openat
+/@filename[tid] && args->ret >= 0/
+{
+    $filename = @filename[tid];
+    
+    // Track file opens (potential for writes)
+    if (args->flags & 0x1 || args->flags & 0x2) {  // O_WRONLY or O_RDWR
+        @file_opens[$filename] = count();
+    }
+    
+    delete(@filename[tid]);
+}
+
+END
+{
+    printf("\n=== TOP FILES BY WRITE COUNT ===\n");
+    print(@writes, 20);
+    
+    printf("\n=== TOP FILES BY BYTES WRITTEN ===\n");
+    print(@bytes_written, 20);
+    
+    printf("\n=== TOP FILES OPENED FOR WRITING ===\n");
+    print(@file_opens, 20);
+    
+    printf("\n=== WRITES BY PROCESS AND FILE (Top 30) ===\n");
+    print(@writes_by_proc, 30);
+    
+    clear(@write_fd);
+    clear(@filename);
+    clear(@writes);
+    clear(@bytes_written);
+    clear(@file_opens);
+    clear(@writes_by_proc);
+}

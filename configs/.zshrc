@@ -5,10 +5,13 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+export SYSTEM_SCRIPTS=$HOME/wd/scripts
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$PATH:$HOME/scripts:/$HOME/mukesh_tools/:$HOME/qemu/build:/home/linuxbrew/.linuxbrew/bin
-export PATH=$PATH:$HOME/scripts/scheduler:$HOME/scripts/perf:$HOME/scripts/mm:$HOME/scripts/agenda:$HOME/scripts/linux-build:$HOME/scripts/system:$HOME/scripts/qemu:$HOME/scripts/misc-scripts:$HOME/scripts/git:$HOME/scripts/fs:$HOME/scripts/emacs:$HOME/scripts/bpf-scripts:$HOME/scripts/docker
+export PATH=$PATH:$SYSTEM_SCRIPTS:/$HOME/wd/mukesh_tools/:$HOME/wd/qemu/build:/home/linuxbrew/.linuxbrew/bin
+export PATH=$PATH:$SYSTEM_SCRIPTS/scheduler:$SYSTEM_SCRIPTS/perf:$SYSTEM_SCRIPTS/mm:$SYSTEM_SCRIPTS/agenda:$SYSTEM_SCRIPTS/linux-build:$SYSTEM_SCRIPTS/system:$HOME/wdscripts/qemu:$SYSTEM_SCRIPTS/misc-scripts:$SYSTEM_SCRIPTS/git:$SYSTEM_SCRIPTS/fs:$SYSTEM_SCRIPTS/emacs:$SYSTEM_SCRIPTS/bpf-scripts:$SYSTEM_SCRIPTS/docker
+export PATH=$PATH:$HOME/mukesh_tools
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"

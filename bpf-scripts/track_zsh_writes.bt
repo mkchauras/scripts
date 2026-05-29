@@ -1,0 +1,90 @@
+#!/usr/bin/env bpftrace
+
+/*
+ * Track file writes specifically from zsh and related processes
+ * Shows visual histogram of write activity
+ * Usage: sudo bpftrace track_zsh_writes.bt
+ * Press Ctrl+C to see results
+ */
+
+BEGIN
+{
+    printf("Tracking zsh-related file writes...\n");
+    printf("Press Ctrl+C to see results\n\n");
+}
+
+// Track write() syscalls from zsh processes
+tracepoint:syscalls:sys_enter_write
+/comm == "zsh" || comm == "bash"/
+{
+    @write_fd[tid] = args->fd;
+    @write_comm[tid] = comm;
+}
+
+tracepoint:syscalls:sys_exit_write
+/@write_fd[tid] && args->ret > 0/
+{
+    $fd = @write_fd[tid];
+    $bytes = args->ret;
+    $path = path(curtask->files->fdt->fd[$fd]);
+    
+    // Count writes per file
+    @writes[$path] = count();
+    
+    // Track bytes written
+    @bytes[$path] = sum($bytes);
+    
+    // Create histogram of write sizes
+    @write_size_hist[$path] = hist($bytes);
+    
+    // Track by process name
+    @proc_writes[@write_comm[tid], $path] = count();
+    
+    delete(@write_fd[tid]);
+    delete(@write_comm[tid]);
+}
+
+// Track fsync/fdatasync (indicates forced disk writes)
+tracepoint:syscalls:sys_enter_fsync,
+tracepoint:syscalls:sys_enter_fdatasync
+/comm == "zsh" || comm == "bash"/
+{
+    $path = path(curtask->files->fdt->fd[args->fd]);
+    @fsyncs[$path] = count();
+}
+
+END
+{
+    printf("\n╔════════════════════════════════════════════════════════════╗\n");
+    printf("║          TOP FILES BY WRITE COUNT (from zsh)              ║\n");
+    printf("╚════════════════════════════════════════════════════════════╝\n");
+    print(@writes, 15);
+    
+    printf("\n╔════════════════════════════════════════════════════════════╗\n");
+    printf("║          TOP FILES BY BYTES WRITTEN (from zsh)            ║\n");
+    printf("╚════════════════════════════════════════════════════════════╝\n");
+    print(@bytes, 15);
+    
+    printf("\n╔════════════════════════════════════════════════════════════╗\n");
+    printf("║          FILES WITH FORCED SYNCS (fsync/fdatasync)        ║\n");
+    printf("╚════════════════════════════════════════════════════════════╝\n");
+    print(@fsyncs, 10);
+    
+    printf("\n╔════════════════════════════════════════════════════════════╗\n");
+    printf("║          WRITE SIZE HISTOGRAMS (bytes)                    ║\n");
+    printf("╚════════════════════════════════════════════════════════════╝\n");
+    print(@write_size_hist);
+    
+    printf("\n╔════════════════════════════════════════════════════════════╗\n");
+    printf("║          WRITES BY PROCESS AND FILE                       ║\n");
+    printf("╚════════════════════════════════════════════════════════════╝\n");
+    print(@proc_writes, 20);
+    
+    clear(@write_fd);
+    clear(@write_comm);
+    clear(@writes);
+    clear(@bytes);
+    clear(@write_size_hist);
+    clear(@fsyncs);
+    clear(@proc_writes);
+}
