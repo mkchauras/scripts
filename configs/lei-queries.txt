@@ -1,20 +1,3 @@
-; to refresh with new results, run: lei up /home/mkchauras/.mails/grub-devel
-; `maxuid' and `lastresult' lines are maintained by "lei up" for optimization
-[lei]
-	q = (a:grub-devel@gnu.org OR f:avnish@linux.ibm.com) AND rt:3.month.ago..
-[lei "q"]
-	include = https://lore.kernel.org/all/
-	external = 1
-	local = 1
-	remote = 1
-	threads = 1
-	dedupe = mid
-	output = maildir:/home/mkchauras/.mails/grub-devel
-[external "https://lore.kernel.org/all/"]
-[external "/home/mkchauras/.local/share/lei/store"]
-	maxuid = 57260
-
-
 ; to refresh with new results, run: lei up /home/mkchauras/.mails/linuxppc
 ; `maxuid' and `lastresult' lines are maintained by "lei up" for optimization
 [lei]
